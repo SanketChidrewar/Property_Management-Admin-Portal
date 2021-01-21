@@ -1,0 +1,19 @@
+<div class="container my-5">
+    <h1 class="fw-bold text-primary mt-5">List Of Properties</h1>
+    <div class="row mt-5">
+        <div class="col-md-4 my-3" *ngFor="let property of property_data;let id = index;">
+            <div class="card shadow-sm" style="width: 18rem;">
+              <img *ngIf="property['images'].length!=0" [attr.src]="property['images'][0]" class="card-img-top" alt="...">
+              <img *ngIf="property['images'].length==0" src="https://mediacdn.99acres.com/media1/13303/2/266062443M-1607578974860.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title text-capitalize fw-bold text-dark">{{property['buildingName']}}</h5>
+                  <p class="card-text fw-bold text-black-50">{{property['street']}}, {{property['city']}}, {{property['pincode']}}</p>
+                  <p *ngIf="property['avg_rating']!=null">{{print(property['avg_rating'])}} <span *ngFor="let item of result"><svg class="mx-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path d="M12.672.668a.75.75 0 00-1.345 0L8.27 6.865l-6.838.994a.75.75 0 00-.416 1.279l4.948 4.823-1.168 6.811a.75.75 0 001.088.791L12 18.347l6.117 3.216a.75.75 0 001.088-.79l-1.168-6.812 4.948-4.823a.75.75 0 00-.416-1.28l-6.838-.993L12.672.668z" fill="#f88f01"></path></svg></span></p>
+                  <p *ngIf="property['avg_rating']==null"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path d="M12.672.668a.75.75 0 00-1.345 0L8.27 6.865l-6.838.994a.75.75 0 00-.416 1.279l4.948 4.823-1.168 6.811a.75.75 0 001.088.791L12 18.347l6.117 3.216a.75.75 0 001.088-.79l-1.168-6.812 4.948-4.823a.75.75 0 00-.416-1.28l-6.838-.993L12.672.668z" fill="#ffffff"></path></svg></p>
+                  <button (click)="loadModal(property)" href="#" class="btn btn-outline-primary fw-bold">Get Details</button>
+                </div>
+              </div>
+        </div>
+    </div>
+    
+</div>

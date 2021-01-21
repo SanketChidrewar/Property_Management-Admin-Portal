@@ -1,0 +1,32 @@
+<div class="container">
+    <table class="table table-striped table-bordered mt-5 fs-5 text-center">
+        <thead class="table-dark">
+            <tr>
+                <th>#</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Type</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let user of users;let id = index">
+                <td>{{id}}</td>
+                <td>{{user["firstName"]}}</td>
+                <td>{{user["lastName"]}}</td>
+                <td>{{user["email"]}}</td>
+                <td>{{user["phone"]==null?"NULL":user["phone"]}}</td>
+                <td>{{user["type"]}}</td>
+                <td>
+                    <button 
+                    (click)="toggleActiveStatus(user)"
+                    [class.btn-success]="user['isActive'] == 0"
+                    [class.btn-danger]="user['isActive'] == 1"
+                    class="btn btn-sm fw-bold fs-6">{{user['isActive'] == 0 ? 'Activate' : 'Deactive'}}</button>    
+                </td> 
+            </tr>
+        </tbody>
+    </table>
+</div>
